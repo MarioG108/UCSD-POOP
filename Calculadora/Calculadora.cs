@@ -5,8 +5,9 @@
     {
         if (num2 == 0)
         {
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("No se puede dividir por cero.");
-            return double.NaN; // Not a Number
+            return 0; // Not a Number
         }
         else
         {
