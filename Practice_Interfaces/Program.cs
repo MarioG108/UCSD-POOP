@@ -7,12 +7,13 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        Console.WriteLine("Elija el numero de la operacion a realizar:");
+        Console.WriteLine("Operaciones disponibles:");
         Console.WriteLine((int)Operaciones.Sumar + " - " + Operaciones.Sumar);
         Console.WriteLine((int)Operaciones.Restar + " - " + Operaciones.Restar);
         Console.WriteLine((int)Operaciones.Multiplicar + " - " + Operaciones.Multiplicar);
         Console.WriteLine((int)Operaciones.Dividir + " - " + Operaciones.Dividir);
         
+        Console.WriteLine("Elija el numero de la operacion a realizar:");
         int operacion = int.Parse(Console.ReadLine());
         Console.WriteLine("Escribe un primer numero: ");
         decimal entrada1 = Decimal.Parse(Console.ReadLine());
