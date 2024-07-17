@@ -74,6 +74,7 @@ namespace FormularioCCM
                     ResetConsole();
 
                     Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("{0,-3} Sistema de recepción de quejas y sugerencias {0,-3}", "===");
                     Console.WriteLine("Los campos con (*) son obligatorios:");
                     Console.WriteLine("Digite su Primer Nombre:*");
                     Console.ForegroundColor = ConsoleColor.White;
@@ -128,6 +129,7 @@ namespace FormularioCCM
 
                 ImprimirInforme();
                 Console.ReadLine();
+                Console.ReadLine();
             }
 
             static string LeerCampo(bool isRequired = true, bool isOpen = false)
@@ -147,14 +149,14 @@ namespace FormularioCCM
                         if (!string.IsNullOrWhiteSpace(input))
                             break;
                     }
-                    if (isRequired)
+                    if (isRequired || !string.IsNullOrEmpty(input))
                     {
 
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("Este campo es obligatorio. Por favor, ingrese un valor.");
+                        Console.WriteLine("Este campo es obligatorio. Por favor, ingrese un valor de texto. ");
                         Console.ForegroundColor = ConsoleColor.White;
                     }
-                } while (isRequired);
+                } while (isRequired || !string.IsNullOrEmpty(input));
                 if (string.IsNullOrEmpty(input))
                     return "N/D";
                 return input;
@@ -162,18 +164,17 @@ namespace FormularioCCM
             static string LeerCampoNumero(bool isRequired = true)
             {
                 string num = string.Empty;
-                const string patron = @"\d+";
+                const string patron = @"^\d+$";
                 do
                 {
-                    num = Console.ReadLine();
-                    num = Regex.Replace(num, @"\D", "");
+                    num = Console.ReadLine();                    
 
                     if (Regex.IsMatch(num, patron))
                         break;
                     if (isRequired)
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("Este campo es obligatorio. Por favor, ingrese un valor.");
+                        Console.WriteLine("Este campo es obligatorio. Por favor, ingrese un valor numérico.");
                         Console.ForegroundColor = ConsoleColor.White;
                     }
                 } while (isRequired);
